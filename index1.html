@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Love Only 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<div class="card">
+
+    <h1>Do You Love Me? ❤️</h1>
+
+    <div class="buttons">
+        <button class="yes">YES</button>
+        <button class="no">NO</button>
+    </div>
+
+    <div class="image-box">
+        <img src="love.jpg" alt="Love Image">
+        <p class="message">We are in love 💋 Muaaaah 😘</p>
+    </div>
+
+</div>
+
+<script>
+    const yes = document.querySelector(".yes");
+    const no = document.querySelector(".no");
+    const message = document.querySelector(".message");
+
+    // ✅ Redirect to anniversary page
+    yes.onclick = () => {
+        window.location.href = "anniversary.html";
+    };
+
+    // NO button behavior
+    no.onclick = () => {
+        message.innerHTML = "Nice try 😏 You still love me ❤️";
+    };
+</script>
+
+</body>
+</html>

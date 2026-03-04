@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Chubbui 🖤</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        background:black;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .video-container{
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    video{
+        width:100%;
+        height:100%;
+        object-fit:contain; /* keeps full video visible */
+    }
+</style>
+</head>
+<body>
+
+<div class="video-container">
+    <video controls autoplay playsinline>
+        <source src="first.mp4" type="video/mp4">
+    </video>
+</div>
+
+</body>
+</html>

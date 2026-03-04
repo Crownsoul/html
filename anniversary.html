@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1 Year With You 🖤</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="anniversary.css">
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="container">
+
+    <h1>✨ ONE YEAR TOGETHeR ✨</h1>
+    <h2>365 Days of Love 🖤</h2>
+    <h2>Celebrating Our Love on 23 Feb,2026</h2>
+
+    <div class="heart">❤️</div>
+
+    <p class="love-message">
+    My Chubbui, My Soulmate, My Forever 🖤<br><br>
+    Love you till my last breathe.<br>
+    Be happy always, no overthinking.<br>
+    Only U and ME 😌💫<br><br>
+    Muuuaah 😘
+</p>
+
+    <!-- <button onclick="history.back()">Go Back</button> -->
+
+</div>
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let confetti = [];
+
+for (let i = 0; i < 150; i++) {
+    confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 6 + 2,
+        d: Math.random() * 50,
+        color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+        tilt: Math.random() * 10 - 10
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    confetti.forEach((c, i) => {
+        ctx.beginPath();
+        ctx.lineWidth = c.r;
+        ctx.strokeStyle = c.color;
+        ctx.moveTo(c.x + c.tilt, c.y);
+        ctx.lineTo(c.x, c.y + c.tilt + c.r);
+        ctx.stroke();
+    });
+
+    update();
+}
+
+function update() {
+    confetti.forEach((c, i) => {
+        c.y += Math.cos(c.d) + 2;
+        c.x += Math.sin(c.d);
+
+        if (c.y > canvas.height) {
+            confetti[i] = {
+                ...c,
+                y: -10,
+                x: Math.random() * canvas.width
+            };
+        }
+    });
+}
+
+setInterval(draw, 20);
+</script>
+
+</body>
+</html>
