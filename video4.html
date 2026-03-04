@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Chubbui 🖤</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family: 'Segoe UI', sans-serif;
+
+    /* Soft emotional gradient */
+    background: radial-gradient(circle at center, #2a003f, #0d001a, black);
+}
+
+/* Soft floating blurred hearts */
+.heart{
+    position:absolute;
+    bottom:-50px;
+    width:20px;
+    height:20px;
+    background:#ff4d88;
+    transform:rotate(45deg);
+    animation: float 10s linear infinite;
+    opacity:0.2;
+    filter: blur(2px);
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4d88;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-10px;
+    left:0;
+}
+
+.heart::after{
+    left:-10px;
+    top:0;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(45deg);
+        opacity:0.3;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(45deg);
+        opacity:0;
+    }
+}
+
+/* Video container */
+.video-wrapper{
+    position:relative;
+    width:90%;
+    max-width:500px;
+    animation: fadeIn 3s ease;
+}
+
+/* Video styling */
+video{
+    width:100%;
+    border-radius:25px;
+    box-shadow: 0 0 50px rgba(255, 77, 136, 0.4);
+    animation: softGlow 4s infinite alternate;
+}
+
+/* Text overlay */
+.text{
+    position:absolute;
+    top:-60px;
+    width:100%;
+    text-align:center;
+    color:#ffb3d9;
+    font-size:22px;
+    letter-spacing:2px;
+    opacity:0;
+    animation: textFade 4s forwards;
+}
+
+/* Animations */
+@keyframes fadeIn{
+    from{ opacity:0; transform:scale(0.9); }
+    to{ opacity:1; transform:scale(1); }
+}
+
+@keyframes softGlow{
+    from{ box-shadow: 0 0 40px rgba(255,77,136,0.3); }
+    to{ box-shadow: 0 0 70px rgba(255,77,136,0.6); }
+}
+
+@keyframes textFade{
+    0%{ opacity:0; }
+    100%{ opacity:1; }
+}
+</style>
+</head>
+<body>
+
+<div class="video-wrapper">
+    <div class="text">For My Chubbui 🖤</div>
+    <video controls autoplay playsinline>
+        <source src="fourth.mp4" type="video/mp4">
+    </video>
+</div>
+
+<script>
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 12000);
+}
+
+setInterval(createHeart, 800);
+</script>
+
+</body>
+</html>

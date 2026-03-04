@@ -1,29 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>For My Chubbui 🖤</title>
-    <style>
-        body{
-            margin:0;
-            background:black;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Chubbui 🖤</title>
 
-        video{
-            width:80%;
-            border-radius:20px;
-            box-shadow:0 0 40px #ff4d6d;
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        background: radial-gradient(circle at top, #111, #000);
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Floating hearts */
+    .heart{
+        position:fixed;
+        bottom:-20px;
+        color:#ff4d6d;
+        font-size:20px;
+        animation: floatUp linear infinite;
+        opacity:0.7;
+        z-index:0;
+    }
+
+    @keyframes floatUp{
+        from{
+            transform:translateY(0) scale(1);
+            opacity:0.8;
         }
-    </style>
+        to{
+            transform:translateY(-110vh) scale(1.5);
+            opacity:0;
+        }
+    }
+
+    /* Video section */
+    .video-wrapper{
+        position:relative;
+        width:90vw;
+        max-width:500px;
+        z-index:1;
+        animation:zoomIn 1.5s ease;
+    }
+
+    video{
+        width:100%;
+        border-radius:25px;
+        box-shadow:0 0 30px #ff4d6d,
+                   0 0 80px rgba(255,77,109,0.6);
+        animation:pulseGlow 2s infinite alternate;
+    }
+
+    .back-btn{
+        position:absolute;
+        top:-50px;
+        right:0;
+        background:transparent;
+        border:1px solid #ff4d6d;
+        color:#ff4d6d;
+        padding:6px 15px;
+        border-radius:20px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .back-btn:hover{
+        background:#ff4d6d;
+        color:black;
+        box-shadow:0 0 15px #ff4d6d;
+    }
+
+    @keyframes zoomIn{
+        from{transform:scale(0.8);}
+        to{transform:scale(1);}
+    }
+
+    @keyframes pulseGlow{
+        from{
+            box-shadow:0 0 30px #ff4d6d,
+                       0 0 60px rgba(255,77,109,0.4);
+        }
+        to{
+            box-shadow:0 0 45px #ff4d6d,
+                       0 0 100px rgba(255,77,109,0.8);
+        }
+    }
+</style>
 </head>
 <body>
 
-<video controls autoplay>
-    <source src="first.mp4" type="video/mp4">
-</video>
+<div class="video-wrapper">
+    <!-- <button class="back-btn" onclick="history.back()">← Back</button> -->
+
+    <video controls autoplay playsinline>
+        <source src="first.mp4" type="video/mp4">
+    </video>
+</div>
+
+<script>
+    // Create floating hearts
+    function createHeart(){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>

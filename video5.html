@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not In My Destiny 🖤</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Segoe UI', sans-serif;
+    color:white;
+
+    /* Deep night destiny gradient */
+    background: radial-gradient(circle at center, #1a001f, #000010, #000000);
+}
+
+/* Floating soft stars */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    opacity:0.5;
+    animation: drift 8s linear infinite;
+}
+
+@keyframes drift{
+    from{
+        transform:translateY(0);
+        opacity:0.5;
+    }
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+.container{
+    position:relative;
+    text-align:center;
+    animation: fadeIn 3s ease;
+}
+
+/* Emotional text */
+.text{
+    margin-bottom:30px;
+    font-size:20px;
+    letter-spacing:1px;
+    opacity:0.8;
+    color:#c8a2ff;
+}
+
+/* Video wrapper */
+.video-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Rotate video 90 degree anti-clockwise */
+video{
+    width:70vh;       /* swapped because of rotation */
+    max-width:95vw;
+    
+    border-radius:25px;
+    box-shadow:0 0 60px rgba(200,162,255,0.4);
+    animation: softGlow 4s infinite alternate;
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:scale(0.95); }
+    to{ opacity:1; transform:scale(1); }
+}
+
+@keyframes softGlow{
+    from{ box-shadow:0 0 40px rgba(200,162,255,0.3); }
+    to{ box-shadow:0 0 80px rgba(200,162,255,0.6); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="video-wrapper">
+        <video controls autoplay playsinline>
+            <source src="third.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+// create drifting stars
+function createStar(){
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = "100vh";
+    star.style.animationDuration = (6 + Math.random() * 6) + "s";
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 12000);
+}
+
+setInterval(createStar, 200);
+</script>
+
+</body>
+</html>
